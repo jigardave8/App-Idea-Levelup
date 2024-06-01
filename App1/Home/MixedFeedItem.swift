@@ -5,14 +5,28 @@
 //  Created by Jigar on 01/06/24.
 //
 
-import SwiftUI
+// MixedFeedItem.swift
+import Foundation
 
-struct MixedFeedItem: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+enum MixedFeedItem: Identifiable {
+    case feed(FeedItem)
+    case post(Post)
+    
+    var id: UUID {
+        switch self {
+        case .feed(let feedItem):
+            return feedItem.id
+        case .post(let post):
+            return post.id
+        }
     }
-}
-
-#Preview {
-    MixedFeedItem()
+    
+    var date: Date {
+        switch self {
+        case .feed(let feedItem):
+            return feedItem.date
+        case .post(let post):
+            return post.date
+        }
+    }
 }

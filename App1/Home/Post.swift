@@ -5,14 +5,14 @@
 //  Created by Jigar on 01/06/24.
 //
 
-import SwiftUI
+// Post.swift
+import Foundation
 
-struct Post: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    Post()
+struct Post: Identifiable {
+    var id = UUID()
+    var author: String
+    var content: String
+    var likes: Int
+    var comments: [String]
+    var date: Date
 }

@@ -5,14 +5,45 @@
 //  Created by Jigar on 01/06/24.
 //
 
+// CartView.swift
 import SwiftUI
 
 struct CartView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @EnvironmentObject var cart: Cart
 
-#Preview {
-    CartView()
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(cart.items) { item in
+                    HStack {
+                        Text(item.name)
+                        Spacer()
+                        Text(String(format: "$%.2f", item.price))
+                    }
+                }
+                .onDelete(perform: deleteItems)
+                
+                HStack {
+                    Text("Total")
+                        .font(.headline)
+                    Spacer()
+                    Text(String(format: "$%.2f", cart.total))
+                        .font(.headline)
+                }
+            }
+            .navigationTitle("Cart")
+            .navigationBarItems(trailing: NavigationLink(destination: PaymentView()) {
+                Text("Checkout")
+                    .font(.headline)
+                    .padding()
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            })
+        }
+    }
+
+    func deleteItems(at offsets: IndexSet) {
+        offsets.forEach { cart.items.remove(at: $0) }
+    }
 }

@@ -5,14 +5,21 @@
 //  Created by Jigar on 01/06/24.
 //
 
-import SwiftUI
+// Cart.swift
+import Foundation
 
-struct Cart: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class Cart: ObservableObject {
+    @Published var items: [Item] = []
+
+    func add(item: Item) {
+        items.append(item)
     }
-}
 
-#Preview {
-    Cart()
+    func remove(item: Item) {
+        items.removeAll { $0.id == item.id }
+    }
+
+    var total: Double {
+        items.reduce(0) { $0 + $1.price }
+    }
 }

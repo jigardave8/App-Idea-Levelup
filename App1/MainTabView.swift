@@ -24,7 +24,7 @@ struct MainTabView: View {
             
             TasksPage()
                 .tabItem {
-                    Image(systemName: "checkmark.circle.fill")
+                    Image(systemName: "list.bullet")
                     Text("Tasks")
                 }
             

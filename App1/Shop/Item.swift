@@ -5,14 +5,15 @@
 //  Created by Jigar on 01/06/24.
 //
 
-import SwiftUI
+// Item.swift
+import Foundation
 
-struct Item: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    Item()
+struct Item: Identifiable {
+    var id = UUID()
+    var name: String
+    var description: String
+    var price: Double
+    var imageName: String
+    var dateAdded: Date
+    var popularity: Int
 }
