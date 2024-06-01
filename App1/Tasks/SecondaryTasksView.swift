@@ -5,14 +5,19 @@
 //  Created by Jigar on 01/06/24.
 //
 
+// SecondaryTasksView.swift
+// SecondaryTasksView.swift
+
 import SwiftUI
 
 struct SecondaryTasksView: View {
+    let secondaryTasks = TaskData.tasks.filter { $0.type == .secondary }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(secondaryTasks) { task in
+            TaskRow(task: task)
+                .padding(.vertical, 8)
+        }
+        .listStyle(PlainListStyle())
     }
-}
-
-#Preview {
-    SecondaryTasksView()
 }

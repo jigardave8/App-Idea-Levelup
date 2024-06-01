@@ -5,7 +5,6 @@
 //  Created by Jigar on 01/06/24.
 //
 
-// FeedItemRowView.swift
 import SwiftUI
 
 struct FeedItemRowView: View {
@@ -17,23 +16,34 @@ struct FeedItemRowView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
                 .padding(.top, 4)
+                .foregroundColor(.blue)
             
             VStack(alignment: .leading, spacing: 4) {
-                Text(feedItem.person)
-                    .font(.headline)
+                HStack {
+                    Text(feedItem.person)
+                        .font(.headline)
+                    Spacer()
+                    Text(feedItem.date, style: .time)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
+                
                 Text(feedItem.action)
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.primary)
+
                 if !feedItem.details.isEmpty {
                     Text(feedItem.details)
                         .font(.caption)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
                 }
-                Text(feedItem.date, style: .time)
-                    .font(.caption2)
-                    .foregroundColor(.gray)
             }
         }
         .padding(.vertical, 8)
+        .padding(.horizontal)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .padding(.horizontal)
     }
 }

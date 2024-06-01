@@ -6,13 +6,37 @@
 //
 
 import SwiftUI
-
 struct CourseDetailView: View {
+    let course: Course
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(course.title)
+                .font(.title)
+                .padding()
+            
+            Text("Duration: \(course.duration)")
+                .font(.headline)
+                .padding(.bottom)
+            
+            Text("Cost: \(course.cost)")
+                .font(.headline)
+                .padding(.bottom)
+            
+            Text(course.description)
+                .font(.body)
+                .foregroundColor(.secondary)
+                .padding()
+            
+            Divider()
+            
+            // List of videos
+            List {
+                ForEach(1..<6) { index in
+                    Text("Video \(index)")
+                }
+            }
+            .navigationBarTitle(Text("Course Detail"), displayMode: .inline)
+        }
     }
-}
-
-#Preview {
-    CourseDetailView()
 }

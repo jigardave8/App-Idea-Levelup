@@ -5,14 +5,22 @@
 //  Created by Jigar on 01/06/24.
 //
 
+// ProgramDetailsView.swift
+
 import SwiftUI
-
 struct ProgramDetailsView: View {
+    let program: Task
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(program.title)
+                .font(.title)
+            Text(program.description)
+                .font(.body)
+                .padding()
+            // Add more details if needed
+            Spacer()
+        }
+        .navigationTitle("Program Details")
     }
-}
-
-#Preview {
-    ProgramDetailsView()
 }

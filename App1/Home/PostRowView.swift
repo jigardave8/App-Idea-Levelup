@@ -4,7 +4,6 @@
 //
 //  Created by Jigar on 01/06/24.
 //
-// PostRowView.swift
 import SwiftUI
 
 struct PostRowView: View {
@@ -12,12 +11,20 @@ struct PostRowView: View {
     var post: Post
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(post.author)
-                .font(.headline)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Image(systemName: "person.circle")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(.blue)
+                Text(post.author)
+                    .font(.headline)
+            }
+
             Text(post.content)
                 .font(.body)
-                .padding(.top, 4)
+                .foregroundColor(.primary)
+
             HStack {
                 Button(action: {
                     liked.toggle()
@@ -25,24 +32,27 @@ struct PostRowView: View {
                     Image(systemName: liked ? "heart.fill" : "heart")
                         .foregroundColor(liked ? .red : .gray)
                 }
+
                 Button(action: {
                     // Handle comment action
                 }) {
                     Image(systemName: "bubble.right")
                         .foregroundColor(.gray)
                 }
-                Button(action: {
-                    // Handle share action
-                }) {
-                    Image(systemName: "square.and.arrow.up")
-                        .foregroundColor(.gray)
-                }
+
+                Spacer()
+
+                Text(post.date, style: .time)
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
             .padding(.top, 4)
-            Text(post.date, style: .time)
-                .font(.caption)
-                .foregroundColor(.gray)
+            .padding(.bottom, 8)
         }
+        .padding(.horizontal)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         .padding(.vertical, 8)
     }
 }

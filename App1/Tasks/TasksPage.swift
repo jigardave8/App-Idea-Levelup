@@ -5,64 +5,77 @@
 //  Created by Jigar on 01/06/24.
 //
 
+
+
 import SwiftUI
 
 struct TasksPage: View {
-    @State private var tasks = TaskData.tasks
-
+    @State private var selectedTab: Tab = .primary
+    
+    enum Tab {
+        case primary, secondary, browse
+    }
+    
     var body: some View {
         NavigationView {
-            List {
-                Section(header: Text("Primary Tasks")) {
-                    ForEach(tasks.filter { $0.type == .primary }) { task in
-                        TaskRow(task: task)
-                    }
-                }
-
-                Section(header: Text("Secondary Tasks")) {
-                    ForEach(tasks.filter { $0.type == .secondary }) { task in
-                        TaskRow(task: task)
-                    }
-                }
-
-                Section(header: Text("Tertiary Tasks")) {
-                    ForEach(tasks.filter { $0.type == .tertiary }) { task in
-                        TaskRow(task: task)
-                    }
+            VStack(spacing: 0) {
+                tabs
+                
+                Divider()
+                
+                contentView
+            }
+            .navigationBarTitle("Tasks")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+    
+    private var tabs: some View {
+        HStack {
+            ForEach([Tab.primary, Tab.secondary, Tab.browse], id: \.self) { tab in
+                Button(action: {
+                    selectedTab = tab
+                }) {
+                    Text(tab.title)
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedTab == tab ? .blue : .gray)
                 }
             }
-            .navigationTitle("Tasks")
+        }
+        .background(Color(.systemBackground))
+        .padding(.bottom, 8)
+    }
+    
+    private var contentView: some View {
+        Group {
+            switch selectedTab {
+            case .primary:
+                PrimaryTasksView()
+            case .secondary:
+                SecondaryTasksView()
+            case .browse:
+                BrowseCoursesView()
+            }
         }
     }
 }
 
-struct TaskRow: View {
-    @State var task: Task
-
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(task.title)
-                    .font(.headline)
-                Text(task.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                Text("Points: \(task.points)")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            Spacer()
-            Button(action: {
-                task.isCompleted.toggle()
-            }) {
-                Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
-                    .foregroundColor(task.isCompleted ? .green : .gray)
-                    .imageScale(.large)
-            }
+extension TasksPage.Tab {
+    var title: String {
+        switch self {
+        case .primary:
+            return "Primary Tasks"
+        case .secondary:
+            return "Secondary Tasks"
+        case .browse:
+            return "Browse Courses"
         }
-        .padding(8)
-        .background(Color(UIColor.systemBackground))
-        .cornerRadius(8)
-        .shadow(radius: 4)
+    }
+}
+
+struct TasksPage_Previews: PreviewProvider {
+    static var previews: some View {
+        TasksPage()
     }
 }

@@ -26,7 +26,7 @@ struct LoginPage: View {
                 
                 VStack(spacing: 20) {
                     // App Name
-                    Text("Super App")
+                    Text("Level UP")
                         .font(.system(size: 34, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                         .padding(.bottom, 30)

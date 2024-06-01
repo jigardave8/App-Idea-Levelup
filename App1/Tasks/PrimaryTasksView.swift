@@ -5,14 +5,20 @@
 //  Created by Jigar on 01/06/24.
 //
 
+// PrimaryTasksView.swift
+
+// PrimaryTasksView.swift
+
 import SwiftUI
 
 struct PrimaryTasksView: View {
+    let primaryTasks = TaskData.tasks.filter { $0.type == .primary }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List(primaryTasks) { task in
+            TaskRow(task: task)
+                .padding(.vertical, 8)
+        }
+        .listStyle(PlainListStyle())
     }
-}
-
-#Preview {
-    PrimaryTasksView()
 }
