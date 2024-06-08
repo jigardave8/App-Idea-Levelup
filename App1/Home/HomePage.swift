@@ -17,6 +17,8 @@ struct HomePage: View {
         return mixed.sorted { $0.date > $1.date }
     }
 
+    
+    
     func addNewPost() {
         let newPost = Post(author: "User", content: newPostContent, likes: 0, comments: [], date: Date())
         posts.insert(newPost, at: 0)

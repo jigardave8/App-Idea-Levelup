@@ -37,30 +37,39 @@ struct ShopPage: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    TextField("Search", text: $searchText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Picker("Sort by", selection: $sortOption) {
-                        Text("Name").tag(SortOption.name)
-                        Text("Recent").tag(SortOption.recent)
-                        Text("Popularity").tag(SortOption.popularity)
-                        Text("Value").tag(SortOption.value)
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                }
-                .padding()
+                SearchBar(text: $searchText)
+                    .padding()
                 
+                Picker("Sort by", selection: $sortOption) {
+                    Text("Name").tag(SortOption.name)
+                    Text("Recent").tag(SortOption.recent)
+                    Text("Popularity").tag(SortOption.popularity)
+                    Text("Value").tag(SortOption.value)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.horizontal)
+
                 List(sortedItems) { item in
                     NavigationLink(destination: ItemDetailView(item: item)) {
                         ItemRowView(item: item)
                     }
                 }
+                .listStyle(PlainListStyle())
                 .navigationTitle("Shop")
                 .navigationBarItems(trailing: Button(action: {
                     isShowingCart.toggle()
                 }) {
                     Image(systemName: "cart.fill")
+                        .foregroundColor(.blue)
+                        .imageScale(.large)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(radius: 4)
                     Text("\(cart.items.count)")
+                        .font(.headline)
+                        .foregroundColor(.blue)
+                        .padding(.trailing)
                 })
                 .sheet(isPresented: $isShowingCart) {
                     CartView()

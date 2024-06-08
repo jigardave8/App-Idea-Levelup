@@ -13,6 +13,7 @@ struct EditProfilePage: View {
         Skill(name: "Design", level: 3),
         Skill(name: "Communication", level: 4)
     ])
+    
 
     var body: some View {
         NavigationView {
@@ -29,6 +30,7 @@ struct EditProfilePage: View {
                 }
                 
                 Spacer()
+            
                 
                 // Save button
                 Button(action: {
