@@ -14,3 +14,5 @@ struct PostData {
         Post(author: "Tutor Jane", content: "Don't forget to submit your assignments.", likes: 3, comments: ["Got it!", "Will do!"], date: Date())
     ]
 }
+
+
