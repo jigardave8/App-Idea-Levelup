@@ -66,6 +66,9 @@ struct EditProfilePage: View {
                 .padding(.horizontal)
             }
             .padding()
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.white, Color.blue.opacity(0.2)]), startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea())
             .navigationTitle("Edit Profile")
         }
     }

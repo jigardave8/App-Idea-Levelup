@@ -41,7 +41,11 @@ struct TasksPage: View {
                 }
             }
         }
-        .background(Color(.systemBackground))
+//        .background(Color(.systemBackground))
+        .background(
+            LinearGradient(gradient: Gradient(colors: [Color.white, Color.blue.opacity(0.2)]), startPoint: .top, endPoint: .bottom)
+//                .ignoresSafeArea()
+        )
         .padding(.bottom, 8)
     }
 
