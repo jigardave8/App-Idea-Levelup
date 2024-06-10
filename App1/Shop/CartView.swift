@@ -30,6 +30,7 @@ struct CartView: View {
                     Text(String(format: "$%.2f", cart.total))
                         .font(.headline)
                 }
+                .padding()
             }
             .navigationTitle("Cart")
             .navigationBarItems(trailing: NavigationLink(destination: PaymentView()) {

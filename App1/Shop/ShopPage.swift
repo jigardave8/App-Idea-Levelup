@@ -37,7 +37,7 @@ struct ShopPage: View {
     var body: some View {
         NavigationView {
             VStack {
-                SearchBar(text: $searchText)
+                CustomSearchBar(text: $searchText)
                     .padding()
                 
                 Picker("Sort by", selection: $sortOption) {
@@ -48,34 +48,80 @@ struct ShopPage: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
-
-                List(sortedItems) { item in
-                    NavigationLink(destination: ItemDetailView(item: item)) {
-                        ItemRowView(item: item)
+                
+                ScrollView {
+                    LazyVStack(spacing: 10) {
+                        ForEach(sortedItems) { item in
+                            NavigationLink(destination: ItemDetailView(item: item)) {
+                                ItemRowView(item: item)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(15)
+                                    .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+                            }
+                        }
                     }
+                    .padding(.horizontal)
                 }
-                .listStyle(PlainListStyle())
                 .navigationTitle("Shop")
                 .navigationBarItems(trailing: Button(action: {
                     isShowingCart.toggle()
                 }) {
-                    Image(systemName: "cart.fill")
-                        .foregroundColor(.blue)
-                        .imageScale(.large)
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(Circle())
-                        .shadow(radius: 4)
-                    Text("\(cart.items.count)")
-                        .font(.headline)
-                        .foregroundColor(.blue)
-                        .padding(.trailing)
+                    HStack {
+                        Image(systemName: "cart.fill")
+                            .foregroundColor(.blue)
+                            .imageScale(.small)
+                        Text("\(cart.items.count)")
+                            .font(.headline)
+                            .foregroundColor(.blue)
+                    }
+                    .padding()
+                    .background(Color.green)
+                    .clipShape(Rectangle())
+                    .shadow(radius: 4)
                 })
                 .sheet(isPresented: $isShowingCart) {
                     CartView()
                         .environmentObject(cart)
                 }
             }
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .edgesIgnoringSafeArea(.all)
+            )
+        }
+    }
+}
+
+struct CustomSearchBar: View {
+    @Binding var text: String
+    
+    var body: some View {
+        HStack {
+            TextField("Search", text: $text)
+                .padding(8)
+                .padding(.horizontal, 25)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .overlay(
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 8)
+                        
+                        if !text.isEmpty {
+                            Button(action: {
+                                self.text = ""
+                            }) {
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 8)
+                            }
+                        }
+                    }
+                )
+                .padding(.horizontal, 10)
         }
     }
 }

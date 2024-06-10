@@ -16,11 +16,14 @@ struct ItemRowView: View {
             Image(item.imageName)
                 .resizable()
                 .frame(width: 50, height: 50)
+                .clipShape(Circle())
+                .shadow(radius: 3)
             VStack(alignment: .leading) {
                 Text(item.name)
                     .font(.headline)
                 Text(String(format: "$%.2f", item.price))
                     .font(.subheadline)
+                    .foregroundColor(.gray)
             }
             Spacer()
         }
