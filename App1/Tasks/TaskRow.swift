@@ -6,32 +6,36 @@
 //
 
 // TaskRow.swift
-
 import SwiftUI
 
 struct TaskRow: View {
-    var task: Task
-    
+    @ObservedObject var task: Task
+
     var body: some View {
         HStack {
             Image(systemName: task.isCompleted ? "checkmark.circle.fill" : "circle")
                 .foregroundColor(task.isCompleted ? .green : .gray)
                 .font(.system(size: 22))
                 .onTapGesture {
-                    // Toggle task completion here
-                    // For example: task.isCompleted.toggle()
+                    task.isCompleted.toggle()
                 }
-            
+
             VStack(alignment: .leading) {
                 Text(task.title)
                     .font(.headline)
                 Text(task.description)
                     .font(.subheadline)
                     .foregroundColor(.gray)
+                Text("Due: \(task.dueDateFormatted)")
+                    .font(.subheadline)
+                    .foregroundColor(.red)
+                Text("Priority: \(task.priority.rawValue)")
+                    .font(.subheadline)
+                    .foregroundColor(.orange)
             }
-            
+
             Spacer()
-            
+
             Text("\(task.points) pts")
                 .foregroundColor(.blue)
         }
@@ -41,7 +45,7 @@ struct TaskRow: View {
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: Task(title: "Watch Course Videos", description: "Complete today's assigned videos", type: .primary, points: 10))
+        TaskRow(task: Task(title: "Watch Course Videos", description: "Complete today's assigned videos", type: .primary, points: 10, dueDate: Date(), priority: .high))
             .previewLayout(.fixed(width: 300, height: 60))
     }
 }

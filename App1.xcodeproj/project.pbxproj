@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B703BE9A2C16D30700CEA7F4 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703BE992C16D30700CEA7F4 /* AddTaskView.swift */; };
+		B703BE9C2C16D35700CEA7F4 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B703BE9B2C16D35700CEA7F4 /* Task.swift */; };
 		B723B8B62C0A8E6F00E02D2A /* App1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B723B8B52C0A8E6F00E02D2A /* App1App.swift */; };
 		B723B8BA2C0A8E7500E02D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B723B8B92C0A8E7500E02D2A /* Assets.xcassets */; };
 		B723B8BE2C0A8E7500E02D2A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B723B8BD2C0A8E7500E02D2A /* Preview Assets.xcassets */; };
@@ -52,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B703BE992C16D30700CEA7F4 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		B703BE9B2C16D35700CEA7F4 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		B723B8B22C0A8E6F00E02D2A /* App1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B723B8B52C0A8E6F00E02D2A /* App1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App1App.swift; sourceTree = "<group>"; };
 		B723B8B92C0A8E7500E02D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -189,7 +193,9 @@
 				B723B90A2C0B06B100E02D2A /* ProgramGridView.swift */,
 				B723B9122C0B0CA100E02D2A /* ProgramDetailsView.swift */,
 				B723B9142C0B0CBF00E02D2A /* TaskRow.swift */,
+				B703BE992C16D30700CEA7F4 /* AddTaskView.swift */,
 				B723B9162C0B0CD900E02D2A /* SearchBar.swift */,
+				B703BE9B2C16D35700CEA7F4 /* Task.swift */,
 				B723B8EC2C0AE12B00E02D2A /* TasksData.swift */,
 			);
 			path = Tasks;
@@ -334,12 +340,14 @@
 				B723B8FF2C0AF40F00E02D2A /* PostData.swift in Sources */,
 				B723B8CD2C0AAB5100E02D2A /* GroupsPage.swift in Sources */,
 				B723B8EF2C0AE61900E02D2A /* Item.swift in Sources */,
+				B703BE9A2C16D30700CEA7F4 /* AddTaskView.swift in Sources */,
 				B723B8CF2C0AAB6A00E02D2A /* TasksPage.swift in Sources */,
 				B723B8D12C0AAB8100E02D2A /* ShopPage.swift in Sources */,
 				B723B8E52C0AC7F200E02D2A /* FeedItem.swift in Sources */,
 				B723B8FB2C0AE6DB00E02D2A /* PaymentView.swift in Sources */,
 				B723B9032C0AF44600E02D2A /* NewPostView.swift in Sources */,
 				B723B90F2C0B092700E02D2A /* SecondaryTasksView.swift in Sources */,
+				B703BE9C2C16D35700CEA7F4 /* Task.swift in Sources */,
 				B723B8D72C0AABC500E02D2A /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

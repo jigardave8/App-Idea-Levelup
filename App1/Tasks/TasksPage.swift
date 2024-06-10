@@ -5,31 +5,29 @@
 //  Created by Jigar on 01/06/24.
 //
 
-
-
 import SwiftUI
 
 struct TasksPage: View {
     @State private var selectedTab: Tab = .primary
-    
+
     enum Tab {
         case primary, secondary, browse
     }
-    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 tabs
-                
+
                 Divider()
-                
+
                 contentView
             }
             .navigationBarTitle("Tasks")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
-    
+
     private var tabs: some View {
         HStack {
             ForEach([Tab.primary, Tab.secondary, Tab.browse], id: \.self) { tab in
@@ -46,7 +44,7 @@ struct TasksPage: View {
         .background(Color(.systemBackground))
         .padding(.bottom, 8)
     }
-    
+
     private var contentView: some View {
         Group {
             switch selectedTab {
@@ -71,11 +69,5 @@ extension TasksPage.Tab {
         case .browse:
             return "Browse Courses"
         }
-    }
-}
-
-struct TasksPage_Previews: PreviewProvider {
-    static var previews: some View {
-        TasksPage()
     }
 }

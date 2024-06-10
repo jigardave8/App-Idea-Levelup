@@ -6,13 +6,15 @@
 //
 
 // SecondaryTasksView.swift
-// SecondaryTasksView.swift
-
 import SwiftUI
 
 struct SecondaryTasksView: View {
-    let secondaryTasks = TaskData.tasks.filter { $0.type == .secondary }
+    @ObservedObject var taskData = TaskData()
     
+    var secondaryTasks: [Task] {
+        taskData.tasks.filter { $0.type == .secondary }
+    }
+
     var body: some View {
         List(secondaryTasks) { task in
             TaskRow(task: task)

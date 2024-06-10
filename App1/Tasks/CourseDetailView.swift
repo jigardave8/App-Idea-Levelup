@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct CourseDetailView: View {
     let course: Course
     
@@ -38,5 +39,11 @@ struct CourseDetailView: View {
             }
             .navigationBarTitle(Text("Course Detail"), displayMode: .inline)
         }
+    }
+}
+
+struct CourseDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        CourseDetailView(course: Course(title: "Sample Course", duration: "1 month", cost: "Free", description: "This is a sample course description."))
     }
 }

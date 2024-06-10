@@ -91,7 +91,6 @@ struct CourseCard: View {
     }
 }
 
-
 struct BrowseCoursesView_Previews: PreviewProvider {
     static var previews: some View {
         BrowseCoursesView()
