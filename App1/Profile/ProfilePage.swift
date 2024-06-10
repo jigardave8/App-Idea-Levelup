@@ -12,38 +12,53 @@ struct ProfilePage: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section(header: Text("Account").font(.headline).padding(.top, 20)) {
-                    NavigationLink(destination: EditProfilePage()) {
-                        Label("Edit Profile", systemImage: "person.circle")
-                            .font(.system(size: 18, weight: .medium))
-                            .padding(.vertical, 8)
+            VStack {
+                // Profile Header
+                ProfileHeaderView()
+                
+                // Account Section
+                CardView {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Account")
+                            .font(.headline)
+                            .padding(.top, 20)
+                        
+                        NavigationLink(destination: EditProfilePage()) {
+                            ProfileRowView(title: "Edit Profile", systemImage: "person.circle")
+                        }
+                        NavigationLink(destination: Text("App Info")) {
+                            ProfileRowView(title: "App Info", systemImage: "info.circle")
+                        }
+                        NavigationLink(destination: Text("Rate the App")) {
+                            ProfileRowView(title: "Rate the App", systemImage: "star.circle")
+                        }
                     }
-                    NavigationLink(destination: Text("App Info")) {
-                        Label("App Info", systemImage: "info.circle")
-                            .font(.system(size: 18, weight: .medium))
-                            .padding(.vertical, 8)
-                    }
-                    NavigationLink(destination: Text("Rate the App")) {
-                        Label("Rate the App", systemImage: "star.circle")
-                            .font(.system(size: 18, weight: .medium))
-                            .padding(.vertical, 8)
-                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 20)
                 }
                 
-                Section {
-                    Button(action: {
+                // Logout Button
+                Button(action: {
+                    withAnimation {
                         loginState.isLoggedIn = false
-                    }) {
-                        Label("Logout", systemImage: "arrowshape.turn.up.backward")
-                            .font(.system(size: 18, weight: .medium))
-                            .padding(.vertical, 8)
-                            .foregroundColor(.red)
                     }
+                }) {
+                    Text("Logout")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                 }
+                .padding(.bottom, 20)
             }
-            .listStyle(GroupedListStyle())
             .navigationTitle("Profile")
+            .background(
+                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .edgesIgnoringSafeArea(.all)
+            )
         }
     }
 }
@@ -51,5 +66,68 @@ struct ProfilePage: View {
 struct ProfilePage_Previews: PreviewProvider {
     static var previews: some View {
         ProfilePage().environmentObject(LoginState())
+    }
+}
+
+// Profile Header View
+struct ProfileHeaderView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "person.circle.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .foregroundColor(.white)
+                .padding(.top, 20)
+            
+            Text("Jay")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(.top, 10)
+            
+            Text("Jay@example.com")
+                .font(.subheadline)
+                .padding(.bottom, 20)
+                .background(.green)
+            
+            
+        }
+    }
+}
+
+// Custom Card View
+struct CardView<Content: View>: View {
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack {
+            content
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
+        .padding(.horizontal)
+    }
+}
+
+// Profile Row View
+struct ProfileRowView: View {
+    let title: String
+    let systemImage: String
+    
+    var body: some View {
+        HStack {
+            Label(title, systemImage: systemImage)
+                .font(.headline)
+                .foregroundColor(.primary)
+            Spacer()
+        }
+        .padding(.vertical, 8)
     }
 }
