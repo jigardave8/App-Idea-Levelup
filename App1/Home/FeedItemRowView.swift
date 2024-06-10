@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// FeedItemRowView with Animation
 struct FeedItemRowView: View {
     var feedItem: FeedItem
 

@@ -27,10 +27,14 @@ struct PostRowView: View {
 
             HStack {
                 Button(action: {
-                    liked.toggle()
+                    withAnimation {
+                        liked.toggle()
+                    }
                 }) {
                     Image(systemName: liked ? "heart.fill" : "heart")
                         .foregroundColor(liked ? .red : .gray)
+                        .scaleEffect(liked ? 1.2 : 1)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.6))
                 }
 
                 Button(action: {
