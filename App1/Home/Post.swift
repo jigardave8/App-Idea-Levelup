@@ -16,3 +16,5 @@ struct Post: Identifiable {
     var comments: [String]
     var date: Date
 }
+
+
