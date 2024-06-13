@@ -58,6 +58,8 @@ struct HomePage: View {
                                     .animation(.easeInOut)
                             }
                         }
+                        
+                        
                     }
                     .padding(.horizontal)
                 }
