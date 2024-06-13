@@ -13,6 +13,7 @@ struct PostData {
         Post(author: "Tutor John", content: "Today we will learn about SwiftUI!", likes: 5, comments: ["Great lesson!", "Thank you!"], date: Date()),
         Post(author: "Tutor Jane", content: "Don't forget to submit your assignments.", likes: 3, comments: ["Got it!", "Will do!"], date: Date())
     ]
+    
 }
 
 
