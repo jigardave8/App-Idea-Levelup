@@ -24,6 +24,8 @@ struct LoginPage: View {
                                endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
                 
+                
+                
                 VStack(spacing: 20) {
                     // App Name
                     Text("Level UP")
