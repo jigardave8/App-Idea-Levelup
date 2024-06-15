@@ -8,6 +8,8 @@
 import Foundation
 
 class TaskData: ObservableObject {
+    
+    
     @Published var tasks: [Task] = [
         Task(title: "Watch Course Videos", description: "Complete today's assigned videos", type: .primary, points: 10, dueDate: Date(), priority: .medium),
         Task(title: "Solve Coding Challenge", description: "Complete today's coding puzzle", type: .secondary, points: 8, dueDate: Date(), priority: .high),
