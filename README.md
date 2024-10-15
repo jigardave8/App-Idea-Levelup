@@ -1,5 +1,14 @@
 # LevelUp App
 
+<img src="https://github.com/user-attachments/assets/b5519a36-5b17-463b-8bd2-ef0e2e76cd17" alt="Screenshot 1" width="600" />
+<img src="https://github.com/user-attachments/assets/774cd9d8-a11e-44d6-b4fc-aa5cae4b71c5" alt="Screenshot 2" width="600" />
+<img src="https://github.com/user-attachments/assets/ff7efd30-16e3-4679-bd5c-3eebd6903df4" alt="Screenshot 3" width="600" />
+<img src="https://github.com/user-attachments/assets/f781c50c-9531-49e2-9141-3e2ee098134c" alt="Screenshot 4" width="600" />
+<img src="https://github.com/user-attachments/assets/35e82d13-ca07-40fd-892a-2051d27bfc7a" alt="Screenshot 5" width="600" />
+<img src="https://github.com/user-attachments/assets/cf5fc5da-2fbd-464d-8481-5e13e3aac6ce" alt="Screenshot 6" width="600" />
+<img src="https://github.com/user-attachments/assets/9dc01aa7-1497-4ea1-96b4-22e175eec2e7" alt="Screenshot 7" width="600" />
+<img src="https://github.com/user-attachments/assets/e8394366-15f3-4858-9b1f-0ad5d8708581" alt="Screenshot 8" width="600" />
+
 ![Simulator Screenshot - iPhone 16 Pro Max - 2024-10-15 at 10 59 24](https://github.com/user-attachments/assets/b5519a36-5b17-463b-8bd2-ef0e2e76cd17)
 ![Simulator Screenshot - iPhone 16 Pro Max - 2024-10-15 at 11 01 15](https://github.com/user-attachments/assets/774cd9d8-a11e-44d6-b4fc-aa5cae4b71c5)
 ![Simulator Screenshot - iPhone 16 Pro Max - 2024-10-15 at 11 01 07](https://github.com/user-attachments/assets/ff7efd30-16e3-4679-bd5c-3eebd6903df4)
@@ -8,6 +17,8 @@
 ![Simulator Screenshot - iPhone 16 Pro Max - 2024-10-15 at 11 00 46](https://github.com/user-attachments/assets/cf5fc5da-2fbd-464d-8481-5e13e3aac6ce)
 ![Simulator Screenshot - iPhone 16 Pro Max - 2024-10-15 at 11 00 39](https://github.com/user-attachments/assets/9dc01aa7-1497-4ea1-96b4-22e175eec2e7)
 ![Simulator Screenshot - iPhone 16 Pro Max - 2024-10-15 at 11 00 12](https://github.com/user-attachments/assets/e8394366-15f3-4858-9b1f-0ad5d8708581)
+
+
 
 ## Overview
 
