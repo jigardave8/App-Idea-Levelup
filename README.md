@@ -66,7 +66,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any inquiries or feedback, please reach out to [your-email@example.com](mailto:your-email@example.com).
-```
+For any inquiries or feedback, please reach out to jdavenz8@gmail.com.
 
-Feel free to customize the content to better reflect your app’s functionality and your personal style!
