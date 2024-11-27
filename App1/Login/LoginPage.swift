@@ -6,89 +6,81 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginPage: View {
     @EnvironmentObject var loginState: LoginState
-    @State private var username: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @State private var isAnimating: Bool = false
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
-    
+    @State private var navigateToHome: Bool = false
+    @State private var navigateToSignUp: Bool = false
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
-                // Gradient Background
-                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]),
+                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.pink]),
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing)
                     .edgesIgnoringSafeArea(.all)
-                
-                
-                
+
                 VStack(spacing: 20) {
-                    // App Name
-                    Text("Level UP")
+                    Text("LevelUp")
                         .font(.system(size: 34, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                         .padding(.bottom, 30)
                         .opacity(isAnimating ? 1 : 0)
                         .scaleEffect(isAnimating ? 1 : 0.5)
-                        .animation(Animation.easeOut(duration: 1.0).delay(0.3))
-                    
-                    // Title
-                    Text("Welcome Back!")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .opacity(isAnimating ? 1 : 0)
-                        .scaleEffect(isAnimating ? 1 : 0.5)
-                        .animation(Animation.easeOut(duration: 1.0).delay(0.5))
-                    
-                    // Username Field
-                    TextField("Email", text: $username)
+                        .animation(Animation.easeOut(duration: 1.0).delay(0.3), value: isAnimating)
+
+                    TextField("Email", text: $email)
                         .padding()
-                        .background(Color.white.opacity(0.8))
+                        .background(Color.gray.opacity(0.8))
                         .cornerRadius(10)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
                         .padding(.horizontal, 40)
-                        .opacity(isAnimating ? 1 : 0)
-                        .offset(y: isAnimating ? 0 : 50)
-                        .animation(Animation.easeOut(duration: 1.0).delay(0.7))
-                    
-                    // Password Field
+
                     SecureField("Password", text: $password)
                         .padding()
-                        .background(Color.white.opacity(0.8))
+                        .background(Color.gray.opacity(0.8))
                         .cornerRadius(10)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 5)
                         .padding(.horizontal, 40)
-                        .opacity(isAnimating ? 1 : 0)
-                        .offset(y: isAnimating ? 0 : 50)
-                        .animation(Animation.easeOut(duration: 1.0).delay(0.9))
-                    
+
                     // Login Button
-                    Button(action: {
-                        self.validateInputs()
-                    }) {
+                    Button(action: loginUser) {
                         Text("Login")
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]),
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.orange, Color.secondary]),
                                                        startPoint: .leading,
                                                        endPoint: .trailing))
                             .cornerRadius(10)
                             .shadow(radius: 10)
                     }
                     .padding(.horizontal, 40)
-                    .padding(.top, 20)
-                    .opacity(isAnimating ? 1 : 0)
-                    .offset(y: isAnimating ? 0 : 50)
-                    .animation(Animation.easeOut(duration: 1.0).delay(1.1))
+
+                    // Sign-Up Navigation Button
+                    NavigationLink(destination: SignUpPage(), isActive: $navigateToSignUp) {
+                        Button(action: {
+                            navigateToSignUp = true
+                        }) {
+                            Text("Don't have an account? Sign Up")
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
+                        }
+                    }
+                    .padding(.horizontal, 40)
                 }
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Error"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                 }
             }
             .onAppear {
@@ -96,23 +88,15 @@ struct LoginPage: View {
             }
         }
     }
-    
-    private func validateInputs() {
-        if !username.contains("@") {
-            alertMessage = "Please enter a valid email address."
-            showAlert = true
-        } else if password.count < 6 {
-            alertMessage = "Password must be at least 6 characters long."
-            showAlert = true
-        } else {
-            // Proceed with login action
-            loginState.isLoggedIn = true
-        }
-    }
-}
 
-struct LoginPage_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginPage().environmentObject(LoginState())
+    private func loginUser() {
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let error = error {
+                alertMessage = "Login failed: \(error.localizedDescription)"
+                showAlert = true
+            } else {
+                loginState.isLoggedIn = true // You can redirect to HomeView if needed
+            }
+        }
     }
 }
