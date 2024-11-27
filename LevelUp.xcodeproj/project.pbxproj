@@ -59,6 +59,8 @@
 		B723B9172C0B0CD900E02D2A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B723B9162C0B0CD900E02D2A /* SearchBar.swift */; };
 		B723B9192C0B183B00E02D2A /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B723B9182C0B183B00E02D2A /* CourseDetailView.swift */; };
 		B734EFE12CF6DE0F00AAB92C /* SignUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B734EFE02CF6DE0C00AAB92C /* SignUpPage.swift */; };
+		B734EFE32CF6E24800AAB92C /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B734EFE22CF6E24800AAB92C /* PostViewModel.swift */; };
+		B734EFE52CF6E82A00AAB92C /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B734EFE42CF6E81F00AAB92C /* HomePageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,8 @@
 		B723B9162C0B0CD900E02D2A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		B723B9182C0B183B00E02D2A /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		B734EFE02CF6DE0C00AAB92C /* SignUpPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPage.swift; sourceTree = "<group>"; };
+		B734EFE22CF6E24800AAB92C /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostViewModel.swift; path = App1/Home/PostViewModel.swift; sourceTree = SOURCE_ROOT; };
+		B734EFE42CF6E81F00AAB92C /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,8 @@
 				B723B8C82C0AA36300E02D2A /* LoginState.swift */,
 				B734EFE02CF6DE0C00AAB92C /* SignUpPage.swift */,
 				B723B8C42C0A8ED000E02D2A /* LoginPage.swift */,
+				B734EFE22CF6E24800AAB92C /* PostViewModel.swift */,
+				B734EFE42CF6E81F00AAB92C /* HomePageViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -358,6 +364,7 @@
 				B723B8D52C0AABAD00E02D2A /* EditProfilePage.swift in Sources */,
 				B723B8F52C0AE67200E02D2A /* ItemDetailView.swift in Sources */,
 				B723B9172C0B0CD900E02D2A /* SearchBar.swift in Sources */,
+				B734EFE52CF6E82A00AAB92C /* HomePageViewModel.swift in Sources */,
 				B723B8FD2C0AF3F000E02D2A /* Post.swift in Sources */,
 				B723B8F32C0AE65700E02D2A /* ItemRowView.swift in Sources */,
 				B723B8FF2C0AF40F00E02D2A /* PostData.swift in Sources */,
@@ -369,6 +376,7 @@
 				B723B8E52C0AC7F200E02D2A /* FeedItem.swift in Sources */,
 				B723B8FB2C0AE6DB00E02D2A /* PaymentView.swift in Sources */,
 				B723B9032C0AF44600E02D2A /* NewPostView.swift in Sources */,
+				B734EFE32CF6E24800AAB92C /* PostViewModel.swift in Sources */,
 				B723B90F2C0B092700E02D2A /* SecondaryTasksView.swift in Sources */,
 				B703BE9C2C16D35700CEA7F4 /* Task.swift in Sources */,
 				B723B8D72C0AABC500E02D2A /* MainTabView.swift in Sources */,
